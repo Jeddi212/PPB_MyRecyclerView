@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         binding.rvHeroes.setHasFixedSize(true)
 
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 dataPhoto[position]
             )
             listHero.add(hero)
-            }
+        }
         return listHero
     }
 
