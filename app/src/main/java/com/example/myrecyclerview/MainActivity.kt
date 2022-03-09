@@ -2,6 +2,7 @@ package com.example.myrecyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myrecyclerview.databinding.ActivityMainBinding
 
@@ -28,6 +29,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun showRecyclerGrid() {
+        binding.rvHeroes.layoutManager = GridLayoutManager(this, 2)
+        val gridHeroAdapter = GridHeroAdapter(list)
+        binding.rvHeroes.adapter = gridHeroAdapter
+    }
+
     fun getListHeroes(): ArrayList<Hero> {
         val dataName = resources.getStringArray(R.array.data_name)
         val dataDescription = resources.getStringArray(R.array.data_description)
@@ -43,6 +50,20 @@ class MainActivity : AppCompatActivity() {
             listHero.add(hero)
         }
         return listHero
+    }
+
+    private fun setMode(selectedMode: Int) {
+        when (selectedMode) {
+            R.id.action_list -> {
+                showRecyclerList()
+            }
+            R.id.action_grid -> {
+                showRecyclerGrid()
+            }
+            R.id.action_cardview -> {
+
+            }
+        }
     }
 
 }
